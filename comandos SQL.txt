@@ -1,0 +1,50 @@
+create database barbearia;
+
+use barbearia;
+
+// comando de criação da tabela
+
+create table cliente (
+idCliente int not null auto_increment,
+nome varchar(50) not null,
+telefone decimal not null,
+Primary Key (idCliente)
+); 
+
+// verificar criação da tabela
+
+describe cliente;
+
+//comandos de inserção
+
+insert into cliente (nome, telefone) values ("José Afranio", 12982964018 );
+insert into cliente (nome, telefone) values ("Maria", 12991547896 );
+
+
+// comando para visualizar
+
+// mostra todos os campos  *
+select * from cliente;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

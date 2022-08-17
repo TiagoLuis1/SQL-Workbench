@@ -1,0 +1,56 @@
+create table TipoCliente (
+  idTipo int not null auto_increment,
+  nome varchar(45) not null,
+  primary key(idTipo))
+
+
+create table Cliente (
+  idCliente int not null auto_increment,
+  nome varchar(45) not null,
+  telefone decimal(9) not null,
+  fkTipoCliente int not null,
+  primary key(idCliente),
+    foreign key(fkTipoCliente)
+    references TipoCliente (idTipo)
+  
+create table Aluno (
+  idAluno int not null auto_increment,
+  curso varchar(45) not null,
+  periodo varchar(45) not null,
+  professor varchar(45) NULL,
+  fkCliente int not null,
+  primary key(idAluno),
+    foreign key(fkCliente)
+    references Cliente (idCliente)
+    
+create table Venda (
+  idVenda int not null auto_increment,
+  data datetime not null,
+  valor float not null,
+  pago tinyint not null,
+  fkCliente int not null,
+  primary key(idVenda),
+    foreign key(fkCliente)
+    references Cliente (idCliente)
+   
+
+create table Produtos (
+  idProdutos int not null auto_increment,
+  nome varchar(45) not null,
+  valor float not null,
+  primary key(idProdutos))
+
+
+create table ItensVendidos (
+  idItensVendidos int not null auto_increment,
+  quantidade decimal(4) not null,
+  valorVenda float not null,
+  fkProdutos int not null,
+  fkVenda int not null,
+  primary key(idItensVendidos),
+    foreign key(fkProdutos)
+    references mydb.Produtos (idProdutos)
+    foreign key(fkVenda)
+    references Venda (idVenda)
+    
+
